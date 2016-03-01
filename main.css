@@ -1,0 +1,145 @@
+/* HTML RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	position: fixed;
+	vertical-align: baseline;
+	position: relative;
+}
+
+/* RESET FOR OLDER BROWSERS */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* SURVEY SURGE STYLES BEGIN */
+html, body {
+	background-color: #001522 !important;
+}
+
+.surveySurge {
+	margin-top: 75px;
+	margin-bottom: 75px;
+	font-family: 'Press Start 2P';
+}
+
+/* INSTRUCTIONAL VIEWS */
+.surveySurge .surgeView {
+	display: none;
+}
+
+.surveySurge .surgeView p {
+	line-height: 26px;
+	margin-bottom: 20px;
+}
+
+.surveySurge button {
+	float: right;
+	text-transform: uppercase;
+	background-color: #349BD2;
+	border: 3px solid #1879AD;
+	color: #fff;
+	padding: 10px 25px;
+}
+
+.surveySurge button:hover {
+	background-color: #1D93D1;
+}
+
+.surveySurge button:focus {
+	outline: none;
+}
+
+/* CATCHING GAME STYLES BEGIN */
+.surveySurge canvas {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 8px;
+}
+
+/* MODAL STYLES */
+.surveySurge .modal .modal-body {
+	padding: 50px;
+	background-color: #fff;
+	border-radius: 8px;
+}
+
+.surveySurge .modal .completionText {
+	text-align: center;
+	margin-bottom: 20px;
+	margin-bottom: 25px;
+}
+
+.surveySurge .modal .buttonWrapper {
+	text-align: center;
+}
+
+.surveySurge .modal button {
+	width: 450px;
+	float: none;
+}
+
+.surveySurge .modal .toPortfolioButton {
+	background-color: #349BD2;
+	border: 3px solid #1879AD;
+	color: #fff;
+	margin-bottom: 10px;
+}
+
+.surveySurge .modal .toPortfolioButton:hover {
+	background-color: #1D93D1;
+}
+
+.surveySurge .modal .playAgainButton {
+	background-color: #efefef;
+	border: 3px solid #d3d6d6;
+	color: #333;
+}
+
+.surveySurge .modal .playAgainButton:hover {
+	background-color: #e3e3e3;
+}
+
+.surveySurge .modal button:focus {
+	outline: none;
+}
+
+
+
+
+
+

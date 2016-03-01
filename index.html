@@ -1,0 +1,81 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<title>Survey Surge</title>
+		<link rel="stylesheet" type="text/css" href="main.css">
+		<link href='https://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+		<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	</head>
+	<script type="text/javascript">
+		var userHeight;
+		document.write('<body style="min-height:' + userHeight + 'px;">');
+	</script>
+		<div class="surveySurge">
+			<div class="container">
+
+				<!-- modal -->
+				<div class="modal fade" id="surveyModal" tabindex="-1" role="dialog" aria-labelledby="surveyModal" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-body">
+								<p class="completionText">Great job! It seems like you did a little better with a little help!</p>
+								<div class="buttonWrapper">
+									<button class="toPortfolioButton">Check out Summer's Portfolio</button>
+									<button class="playAgainButton">Play again</button>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="instruction1 surgeView">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0" style="
+				border: 1px solid #000; border-radius: 8px; background-color: #fff; padding: 25px;">
+							<p>Wufoosaurus, I need your help!</p>
+							<button class="button1">next</button>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="instruction2 surgeView">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0" style="
+				border: 1px solid #000; border-radius: 8px; background-color: #fff; padding: 25px;">
+							<p>Business has been booming. There are so many surveys that need to be collected, stat.</p>
+							<button class="button2">next</button>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="instruction3 surgeView">
+					<div class="row">
+						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0" style="
+				border: 1px solid #000; border-radius: 8px; background-color: #fff; padding: 25px;">
+							<p>Catch as many surveys as your can, but be careful. Don't drop more than 3, or we're doomed!</p>
+							<button class="button3" id="start">ready? let's do this.</button>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="surveyGame surgeView">
+					<canvas id="canvas" width=780 height=500></canvas>
+				</div>
+
+
+			</div>
+		</div>
+		<audio autoplay>
+			<source src="audio/gameSong.mp3" type="audio/mpeg">
+		</audio>
+		<script type="text/javascript" src="app.js"></script>
+	</body>
+</html>
