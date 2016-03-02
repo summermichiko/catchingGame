@@ -10,8 +10,8 @@ $(document).ready(function() {
 		score,
 
 		// wufooSaurus variables
-		wufooSaurusWidth = 150,
-		wufooSaurusHeight = 75,
+		wufooSaurusWidth = 145,
+		wufooSaurusHeight = 158,
 		wufooSaurusSpeed = 10,
 		wufooSaurus = {
 			x: 50,
@@ -107,7 +107,7 @@ $(document).ready(function() {
 
 				// draw wufooSaurus
 				var img = new Image();
-				img.src = 'assets/wufooSaurusSmall.png';
+				img.src = 'assets/wufooSaurus6.png';
 				function drawDino() {
 					context.drawImage(img, wufooSaurus.x, wufooSaurus.y-10);
 				}
