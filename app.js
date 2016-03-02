@@ -9,17 +9,6 @@ $(document).ready(function() {
 		continueAnimating = false,
 		score,
 
-		// x variables
-		xArr = [],
-		xWidth = 40,
-		xHeight = 40,
-		xIcon = {
-			x: 300,
-			y: 0,
-			width: xWidth,
-			height: xHeight
-		},
-
 		// wufooSaurus variables
 		wufooSaurusWidth = 150,
 		wufooSaurusHeight = 75,
@@ -37,6 +26,20 @@ $(document).ready(function() {
 		surveyHeight = 65,
 		totalSurveys = 7,
 		surveys = [],
+
+		// x variables
+		counter = 0;
+		xArr = [],
+		xWidth = 20,
+		xHeight = 20,
+		xIcon = {
+			x: 630,
+			y: 15,
+			width: xWidth,
+			height: xHeight
+		},
+
+		// helper object
 		helper = {
 			addSurvey: function() {
 				var survey = {
@@ -50,26 +53,7 @@ $(document).ready(function() {
 				// randomly position survey near the top of canvas
 				survey.x = Math.random() * (canvas.width - surveyWidth);
 				survey.y = 40 + Math.random() * 30;
-				survey.speed = (0.65 + Math.random()) * 0.9;
-			},
-			addX: function() {
-				// draw the x
-				function generateX() {
-					var xMark = new Image();
-					xMark.src = 'assets/x.png';
-					function drawX() {
-						console.log('draw x')
-						context.drawImage(xMark, xIcon.x, xIcon.y, xIcon.width, xIcon.height);
-						xArr.push(xMark);
-						helper.checkMisses();
-						console.log('xArr', xArr);
-					}
-					function init() {
-						drawX();
-					}
-					init();
-				}
-				generateX();
+				survey.speed = (0.55 + Math.random()) * 0.9;
 			},
 			checkMisses: function() {
 				if (xArr.length == 3) {
@@ -81,6 +65,7 @@ $(document).ready(function() {
 				}
 			},
 			animate: function() {
+				var sound;
 				// request another animation frame
 				if (continueAnimating) {
 					requestAnimationFrame(helper.animate);
@@ -91,21 +76,18 @@ $(document).ready(function() {
 				// (3) if the survey falls below the canvas, reset that survey
 				for (var i = 0; i < surveys.length; i++) {
 					var survey = surveys[i];
-					// test for survey-wufooSaurus collision
 					if (helper.isColliding(survey, wufooSaurus)) {
-						var sound = new Audio("audio/coinSound.mp3");
+						sound = new Audio("audio/coinSound.mp3");
 						sound.play();
 						score += 5;
 						helper.resetSurvey(survey);
 					}
-					// advance the surveys
 					survey.y += survey.speed;
 					// if the survey is below the canvas,
 					if (survey.y > canvas.height) {
-						var sound = new Audio("audio/buzzerSound.mp3");
+						sound = new Audio("audio/buzzerSound.mp3");
 						sound.play();
-						helper.addX();
-						// if 3 x, stop game
+						helper.generateX();
 						helper.resetSurvey(survey);
 					}
 				}
@@ -118,9 +100,11 @@ $(document).ready(function() {
 			drawAll: function() {
 				// clear the canvas
 				context.clearRect(0, 0, canvas.width, canvas.height);
+
 				// draw the background
 				context.fillStyle = '#fff';
 				context.fillRect(0, 0, canvas.width, canvas.height);
+
 				// draw wufooSaurus
 				var img = new Image();
 				img.src = 'assets/wufooSaurusSmall.png';
@@ -153,6 +137,38 @@ $(document).ready(function() {
 				context.font = "14px 'Press Start 2P'";
 				context.fillStyle = "#000";
 				context.fillText("Score:" + score, 15, 30);
+			},
+			generateX: function() {
+				console.log('inside generateX func');
+				var imgX = new Image();
+				imgX.src = 'assets/x.png';
+				function drawX() {
+					console.log(3);
+					counter+=20;
+					context.drawImage(imgX, xIcon.x + counter, xIcon.y, xIcon.width, xIcon.height);
+					xArr.push(imgX);
+					console.log('xArr', xArr);
+				}
+				if (imgX.complete) {
+					console.log(1);
+					drawX();
+				} else {
+					console.log(2);
+					imgX.onload = drawX;
+				}
+				helper.checkMisses();
+			},
+			setGame: function() {
+				score = startingScore;
+				wufooSaurus.x = 0;
+				xArr = [];
+				for (var i = 0; i < surveys.length; i++) {
+					helper.resetSurvey(surveys[i]);
+				}
+				if (!continueAnimating) {
+					continueAnimating = true;
+					helper.animate();
+				}
 			}
 		};
 
@@ -188,28 +204,20 @@ $(document).ready(function() {
 		instructionView.hide();
 		nextView.show();
 	});
+
 	// button to start the game
 	app.on('click', '#start', function() {
 		var instructionView = $(this).closest('.surgeView');
 		var nextView = app.find('.surveyGame');
 		instructionView.hide();
 		nextView.show();
-		score = startingScore;
-		wufooSaurus.x = 0;
-		for (var i = 0; i < surveys.length; i++) {
-			helper.resetSurvey(surveys[i]);
-		}
-		if (!continueAnimating) {
-			continueAnimating = true;
-			helper.animate();
-		}
+		helper.setGame();
+
 	});
 
 	app.on('click', '.playAgainButton', function() {
 		$('#surveyModal').modal('hide');
-		score = startingScore;
-		wufooSaurus.x = 0;
-		xArr = [];
+		helper.setGame();
 		for (var i = 0; i < surveys.length; i++) {
 			helper.resetSurvey(surveys[i]);
 		}
