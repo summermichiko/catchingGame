@@ -65,7 +65,7 @@ html, body {
 	border: 1px solid #000;
 	border-radius: 8px;
 	background-color: #fff;
-	padding: 25px;
+	padding: 25px 25px 0 25px;
 }
 
 .surveySurge .surgeView p {
@@ -74,12 +74,14 @@ html, body {
 	margin-bottom: 20px;
 }
 
-.surveySurge button {
+.surveySurge .viewButton {
 	text-transform: uppercase;
 	background-color: #349BD2;
 	border: 3px solid #1879AD;
 	color: #fff;
 	padding: 10px 25px;
+	margin-top: 25px;
+	margin-bottom: 25px;
 }
 
 .surveySurge button:hover {
@@ -117,7 +119,8 @@ html, body {
 
 .surveySurge .modal button {
 	width: 450px;
-	float: none;
+	text-transform: uppercase;
+	padding: 10px 25px;
 }
 
 .surveySurge .modal .toPortfolioButton {

@@ -14,7 +14,7 @@ $(document).ready(function() {
 		wufooSaurusHeight = 158,
 		wufooSaurusSpeed = 10,
 		wufooSaurus = {
-			x: 50,
+			x: 30,
 			y: canvas.height - wufooSaurusHeight,
 			width: wufooSaurusWidth,
 			height: wufooSaurusHeight,
@@ -107,7 +107,7 @@ $(document).ready(function() {
 
 				// draw wufooSaurus
 				var img = new Image();
-				img.src = 'assets/wufooSaurus6.png';
+				img.src = 'assets/wufooSaurus.png';
 				function drawDino() {
 					context.drawImage(img, wufooSaurus.x, wufooSaurus.y-10);
 				}
@@ -141,7 +141,7 @@ $(document).ready(function() {
 			generateX: function() {
 				console.log('inside generateX func');
 				var imgX = new Image();
-				imgX.src = 'assets/x.png';
+				imgX.src = 'assets/redX.png';
 				function drawX() {
 					console.log(3);
 					counter+=20;
@@ -160,7 +160,7 @@ $(document).ready(function() {
 			},
 			setGame: function() {
 				score = startingScore;
-				wufooSaurus.x = 0;
+				wufooSaurus.x = 30;
 				xArr = [];
 				for (var i = 0; i < surveys.length; i++) {
 					helper.resetSurvey(surveys[i]);
@@ -218,13 +218,6 @@ $(document).ready(function() {
 	app.on('click', '.playAgainButton', function() {
 		$('#surveyModal').modal('hide');
 		helper.setGame();
-		for (var i = 0; i < surveys.length; i++) {
-			helper.resetSurvey(surveys[i]);
-		}
-		if (!continueAnimating) {
-			continueAnimating = true;
-			helper.animate();
-		}
 	});
 	app.on('click', '.toPortfolioButton', function() {
 		window.open('http://summermcdonald.me/', '_blank');
