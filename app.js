@@ -169,6 +169,22 @@ $(document).ready(function() {
 					continueAnimating = true;
 					helper.animate();
 				}
+			},
+			// flip: function() {
+			// 	var flipH = document.getElementById('horizontalCheckbox').checked,
+			// 		flipV = document.getElementById('verticalCheckbox').checked;
+			// 	flipImage(img, ctx, flipH, flipV);
+			// 	return false;
+			// },
+			flipImage: function(image, ctx, flipH, flipV) {
+				var scaleH = -1, // Set horizontal scale to -1 if flip horizontal
+					scaleV = 1, // Set verical scale to -1 if flip vertical
+					posX = flipH ? width * -1 : 0, // Set x position to -100% if flip horizontal
+					posY = flipV ? height * -1 : 0; // Set y position to -100% if flip vertical
+
+				context.scale(scaleH, scaleV); // Set scale to flip the image
+				context.drawImage(img, posX, posY, width, height); // draw the image
+				context.restore(); // Restore the last saved state
 			}
 		};
 
@@ -177,11 +193,14 @@ $(document).ready(function() {
 		// right arrow
 		if (event.keyCode == 39) {
 			wufooSaurus.x += wufooSaurus.wufooSaurusSpeed;
+			// helper.flipImage(wufooSaurus, context, -1, 1);
+
 			if (wufooSaurus.x >= canvas.width - wufooSaurus.width) {
 				wufooSaurus.x = canvas.width - wufooSaurus.width;
 			}
 		} else if (event.keyCode == 37) {
 			wufooSaurus.x -= wufooSaurus.wufooSaurusSpeed;
+
 			if (wufooSaurus.x <= 0) {
 				wufooSaurus.x = 0;
 			}
