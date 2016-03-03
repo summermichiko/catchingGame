@@ -41,6 +41,22 @@ $(document).ready(function() {
 				helper.trackFallingSurveys();
 				helper.drawAll();
 			},
+			bindClick: function(selector) {
+				$(selector).on('click', function() {
+					var instructionView = $(this).closest('.surgeView'),
+						nextView;
+					instructionView.hide();
+					if ((selector.substring(0, 1)) == '#') {
+						nextView = app.find('.surveyGame');
+						nextView.show();
+						helper.setGame();
+					} else {
+						var slicedStr = parseInt(selector.slice(selector.length-1));
+						nextView = app.find('.instruction' + (slicedStr + 1));
+						nextView.show();
+					}
+				});
+			},
 			drawAll: function() {
 				helper.drawCanvas();
 				helper.drawBackground();
@@ -135,12 +151,12 @@ $(document).ready(function() {
 			}
 		};
 
-	//left and right keypush event handlers
 	document.onkeydown = function (event) {
 		if (event.keyCode == 39) {
 			wufooSaurus.x += wufooSaurus.wufooSaurusSpeed;
-			if (wufooSaurus.x >= canvas.width - wufooSaurus.width) {
-				wufooSaurus.x = canvas.width - wufooSaurus.width;
+			var widthAmount = canvas.width - wufooSaurus.width;
+			if (wufooSaurus.x >= widthAmount) {
+				wufooSaurus.x = widthAmount;
 			}
 		} else if (event.keyCode == 37) {
 			wufooSaurus.x -= wufooSaurus.wufooSaurusSpeed;
@@ -151,36 +167,20 @@ $(document).ready(function() {
 	};
 
 	app.find('.instruction1').show();
+
 	for (var i = 0; i < totalSurveys; i++) {
 		helper.addSurvey();
 	}
 
-	app.on('click', '.button1', function() {
-		var instructionView = $(this).closest('.surgeView');
-		var nextView = app.find('.instruction2');
-		instructionView.hide();
-		nextView.show();
-	});
-	app.on('click', '.button2', function() {
-		var instructionView = $(this).closest('.surgeView');
-		var nextView = app.find('.instruction3');
-		instructionView.hide();
-		nextView.show();
-	});
-
-	app.on('click', '#start', function() {
-		var instructionView = $(this).closest('.surgeView');
-		var nextView = app.find('.surveyGame');
-		instructionView.hide();
-		nextView.show();
-		helper.setGame();
-
-	});
+	helper.bindClick('.button1');
+	helper.bindClick('.button2');
+	helper.bindClick('#start');
 
 	app.on('click', '.playAgainButton', function() {
 		$('#surveyModal').modal('hide');
 		helper.setGame();
 	});
+
 	app.on('click', '.toPortfolioButton', function() {
 		window.open('http://summermcdonald.me/', '_blank');
 	});
