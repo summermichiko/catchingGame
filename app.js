@@ -8,6 +8,7 @@ $(document).ready(function() {
 		startingScore = 0,
 		continueAnimating = false,
 		score,
+		int,
 
 		// wufooSaurus variables
 		wufooSaurus = {
@@ -84,9 +85,15 @@ $(document).ready(function() {
 				init();
 			},
 			drawScore: function() {
-				context.font = "14px 'Press Start 2P'";
-				context.fillStyle = "#000";
-				context.fillText("Score:" + score, 15, 30);
+				if($(window).width > 768) {
+					context.font = "14px 'Press Start 2P'";
+					context.fillStyle = "#000";
+					context.fillText("Score:" + score, 15, 30);
+				} else {
+					context.font = "24px 'Press Start 2P'";
+					context.fillStyle = "#000";
+					context.fillText("Score:" + score, 25, 40);
+				}
 			},
 			drawSurveys: function() {
 				for (var i = 0; i < surveys.length; i++) {
@@ -186,25 +193,15 @@ $(document).ready(function() {
 	};
 
 	// buttons for mobile
-	var isDown = false;
-	var $arrowRight = app.find('.mobileRight');
-	var $arrowLeft = app.find('.mobileLeft');
-	$arrowRight.mousedown(function() {
-		isDown = true;
+	app.find('.mobileRight').mousedown(function() {
+		int = setInterval(helper.moveRight, 100);
+	}).mouseup(function() {
+		clearInterval(int);
 	});
-	$arrowLeft.mousedown(function() {
-		isDown = true;
-	});
-	$(document).mouseup(function() {
-		if (isDown) {
-			isDown = false;
-		}
-	});
-	$arrowRight.mousedown(function() {
-		helper.moveRight();
-	});
-	$arrowLeft.mousedown(function() {
-		helper.moveLeft();
+	app.find('.mobileLeft').mousedown(function() {
+		int = setInterval(helper.moveLeft, 100);
+	}).mouseup(function() {
+		clearInterval(int);
 	});
 
 	app.on('click', '.playAgainButton', function() {
