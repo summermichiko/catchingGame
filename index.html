@@ -10,7 +10,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 	</head>
 	<script type="text/javascript">
-		var userHeight;
+		var userHeight = $(window).height();
 		document.write('<body style="min-height:' + userHeight + 'px;">');
 	</script>
 		<div class="surveySurge">
@@ -21,7 +21,7 @@
 						<div class="modal-content">
 							<div class="modal-body">
 								<p class="completionText">Great job! It seems like you did a little better with a little help!</p>
-								<div class="buttonWrapper">
+								<div class="modalButtonWrapper">
 									<button class="modalButton toPortfolioButton">Check out Summer's Portfolio</button>
 									<button class="modalButton playAgainButton">Play again</button>
 								</div>
@@ -33,17 +33,19 @@
 				<!-- view 1 -->
 				<div class="instruction1 surgeView">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 mobileNoPadding">
 							<div class="wrapperDiv row">
-								<div class="col-lg-4 col-md-5 col-sm-5">
-									<div class="imageWrapper">
-										<img class="monkeyImg" src="assets/monkeyOneArm.png">
+								<div class="col-lg-8 col-lg-push-4 col-md-7 col-md-push-5 col-sm-7 col-sm-push-5 col-xs-12 col-xs-push-0">
+									<div class="textWrapper">
+										<p>Wufoosaurus, I need your help!</p>
+										<div class="buttonWrapper">
+											<button class="viewButton button1">next</button>
+										</div>
 									</div>
 								</div>
-								<div class="col-lg-8 col-md-7 col-sm-7">
-									<p class="text1">Wufoosaurus, I need your help!</p>
-									<div style="text-align: right;">
-										<button class="viewButton button1">next</button>
+								<div class="col-lg-4 col-lg-pull-8 col-md-5 col-md-pull-7 col-sm-5 col-sm-pull-7 col-xs-12 col-xs-pull-0">
+									<div class="imageWrapper">
+										<img class="monkeyImg" src="assets/monkeyOneArm.png">
 									</div>
 								</div>
 							</div>
@@ -53,17 +55,19 @@
 				<!-- view 2 -->
 				<div class="instruction2 surgeView">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 mobileNoPadding">
 							<div class="wrapperDiv row">
-								<div class="col-lg-4 col-md-5 col-sm-5">
-									<div class="imageWrapper">
-										<img class="monkeyImg" src="assets/monkeyArms.png">
+								<div class="col-lg-8 col-lg-push-4 col-md-7 col-md-push-5 col-sm-7 col-sm-push-5 col-xs-12 col-xs-push-0">
+									<div class="textWrapper">
+										<p>Business has been booming. There are so many surveys that need to be collected, stat.</p>
+										<div class="buttonWrapper">
+											<button class="viewButton button2">next</button>
+										</div>
 									</div>
 								</div>
-								<div class="col-lg-8 col-md-7 col-sm-7">
-									<p>Business has been booming. There are so many surveys that need to be collected, stat.</p>
-									<div style="text-align: right;">
-										<button class="viewButton button2">next</button>
+								<div class="col-lg-4 col-lg-pull-8 col-md-5 col-md-pull-7 col-sm-5 col-sm-pull-7 col-xs-12 col-xs-pull-0">
+									<div class="imageWrapper">
+										<img class="monkeyImg" src="assets/monkeyArms.png">
 									</div>
 								</div>
 							</div>
@@ -73,17 +77,19 @@
 				<!-- view 3 -->
 				<div class="instruction3 surgeView">
 					<div class="row">
-						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0">
+						<div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 col-xs-offset-0 mobileNoPadding">
 							<div class="wrapperDiv row">
-								<div class="col-lg-4 col-md-5 col-sm-5">
-									<div class="imageWrapper">
-										<img class="monkeyImg" src="assets/monkey.png">
+								<div class="col-lg-8 col-lg-push-4 col-md-7 col-md-push-5 col-sm-7 col-sm-push-5 col-xs-12 col-xs-push-0">
+									<div class="textWrapper">
+										<p>Catch as many surveys as your can, but be careful. Don't drop any, or we're doomed!</p>
+										<div class="buttonWrapper">
+											<button class="viewButton button3" id="start">let's do this.</button>
+										</div>
 									</div>
 								</div>
-								<div class="col-lg-8 col-md-7 col-sm-7">
-									<p>Catch as many surveys as your can, but be careful. Don't drop any, or we're doomed!</p>
-									<div style="text-align: right;">
-										<button class="viewButton button3" id="start">let's do this.</button>
+								<div class="col-lg-4 col-lg-pull-8 col-md-5 col-md-pull-7 col-sm-5 col-sm-pull-7 col-xs-12 col-xs-pull-0">
+									<div class="imageWrapper">
+										<img class="monkeyImg" src="assets/monkey.png">
 									</div>
 								</div>
 							</div>
@@ -94,11 +100,15 @@
 				<div class="surveyGame surgeView">
 					<canvas id="canvas" width=780 height=500></canvas>
 				</div>
+				<div class="mobileButtonWrapper hidden-lg hidden-md hidden-sm col-xs-12">
+					<button class="mobileLeft viewButton">left</button>
+					<button class="mobileRight viewButton">right</button>
+				</div>
 			</div>
 		</div>
-		<audio autoplay>
+		<!-- <audio autoplay>
 			<source src="audio/gameSong.mp3" type="audio/mpeg">
-		</audio>
+		</audio> -->
 		<script type="text/javascript" src="app.js"></script>
 	</body>
 </html>

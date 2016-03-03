@@ -50,6 +50,7 @@ $(document).ready(function() {
 						nextView = app.find('.surveyGame');
 						nextView.show();
 						helper.setGame();
+						app.find('.mobileButtonWrapper').show();
 					} else {
 						var slicedStr = parseInt(selector.slice(selector.length-1));
 						nextView = app.find('.instruction' + (slicedStr + 1));
@@ -110,9 +111,22 @@ $(document).ready(function() {
 			logMiss: function() {
 				continueAnimating = false;
 				$('#surveyModal').modal({
-					backdrop: 'static',
-					keyboard: false
+					// backdrop: 'static',
+					// keyboard: false
 				});
+			},
+			moveLeft: function() {
+				wufooSaurus.x -= wufooSaurus.wufooSaurusSpeed;
+				if (wufooSaurus.x <= 0) {
+					wufooSaurus.x = 0;
+				}
+			},
+			moveRight: function() {
+				wufooSaurus.x += wufooSaurus.wufooSaurusSpeed;
+				var widthAmount = canvas.width - wufooSaurus.width;
+				if (wufooSaurus.x >= widthAmount) {
+					wufooSaurus.x = widthAmount;
+				}
 			},
 			resetSurvey: function(survey) {
 				survey.x = Math.random() * (canvas.width - surveyWidth);
@@ -151,22 +165,8 @@ $(document).ready(function() {
 			}
 		};
 
-	document.onkeydown = function (event) {
-		if (event.keyCode == 39) {
-			wufooSaurus.x += wufooSaurus.wufooSaurusSpeed;
-			var widthAmount = canvas.width - wufooSaurus.width;
-			if (wufooSaurus.x >= widthAmount) {
-				wufooSaurus.x = widthAmount;
-			}
-		} else if (event.keyCode == 37) {
-			wufooSaurus.x -= wufooSaurus.wufooSaurusSpeed;
-			if (wufooSaurus.x <= 0) {
-				wufooSaurus.x = 0;
-			}
-		}
-	};
-
 	app.find('.instruction1').show();
+	app.find('.mobileButtonWrapper').hide();
 
 	for (var i = 0; i < totalSurveys; i++) {
 		helper.addSurvey();
@@ -176,6 +176,37 @@ $(document).ready(function() {
 	helper.bindClick('.button2');
 	helper.bindClick('#start');
 
+	// arrows for desktop
+	document.onkeydown = function (event) {
+		if (event.keyCode == 39) {
+			helper.moveRight();
+		} else if (event.keyCode == 37) {
+			helper.moveLeft();
+		}
+	};
+
+	// buttons for mobile
+	var isDown = false;
+	var $arrowRight = app.find('.mobileRight');
+	var $arrowLeft = app.find('.mobileLeft');
+	$arrowRight.mousedown(function() {
+		isDown = true;
+	});
+	$arrowLeft.mousedown(function() {
+		isDown = true;
+	});
+	$(document).mouseup(function() {
+		if (isDown) {
+			isDown = false;
+		}
+	});
+	$arrowRight.mousedown(function() {
+		helper.moveRight();
+	});
+	$arrowLeft.mousedown(function() {
+		helper.moveLeft();
+	});
+
 	app.on('click', '.playAgainButton', function() {
 		$('#surveyModal').modal('hide');
 		helper.setGame();
@@ -184,5 +215,4 @@ $(document).ready(function() {
 	app.on('click', '.toPortfolioButton', function() {
 		window.open('http://summermcdonald.me/', '_blank');
 	});
-
 });
