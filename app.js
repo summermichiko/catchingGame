@@ -145,7 +145,8 @@ $(document).ready(function() {
 			playAudio: function(selector) {
 				if (selector == '.button0') {
 					if ($(window).width() < 768) {
-						app.find('#audio').play();
+						sound = new Audio("audio/gameSong2.mp3");
+						sound.play();
 					}
 				}
 			},
