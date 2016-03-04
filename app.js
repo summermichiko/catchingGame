@@ -69,11 +69,22 @@ $(document).ready(function() {
 				helper.drawSurveys();
 			},
 			drawBackground: function() {
-				context.fillStyle = '#fff';
-				context.fillRect(0, 0, canvas.width, canvas.height);
+				// context.fillStyle = '#fff';
+				// context.fillRect(0, 0, canvas.width, canvas.height);
+
+				var img = new Image();
+				img.src = 'assets/blueSky.jpg';
+				function drawSky() {
+					context.drawImage(img, canvas.width, canvas.height);
+				}
+				function init() {
+					drawSky();
+				}
+				init();
 			},
 			drawCanvas: function() {
 				context.clearRect(0, 0, canvas.width, canvas.height);
+				helper.drawBackground();
 			},
 			drawWufooSaurus: function() {
 				var img = new Image();
@@ -154,7 +165,7 @@ $(document).ready(function() {
 				for (var i = 0; i < surveys.length; i++) {
 					var survey = surveys[i];
 					if (helper.isColliding(survey, wufooSaurus)) {
-						sound = new Audio("audio/coinSound.mp3");
+						sound = new Audio("audio/coinSound2.mp3");
 						sound.play();
 						score += 5;
 						helper.resetSurvey(survey);
