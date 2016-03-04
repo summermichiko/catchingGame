@@ -58,7 +58,6 @@ $(document).ready(function() {
 						var slicedStr = parseInt(selector.slice(selector.length-1));
 						nextView = app.find('.instruction' + (slicedStr + 1));
 						nextView.show();
-						helper.playAudio(selector);
 					}
 				});
 			},
@@ -142,14 +141,6 @@ $(document).ready(function() {
 					wufooSaurus.x = widthAmount;
 				}
 			},
-			playAudio: function(selector) {
-				if (selector == '.button0') {
-					if ($(window).width() < 768) {
-						sound = new Audio("audio/gameSong2.mp3");
-						sound.play();
-					}
-				}
-			},
 			resetSurvey: function(survey) {
 				survey.x = Math.random() * (canvas.width - surveyWidth);
 				survey.y = 40 + Math.random() * 30;
@@ -208,7 +199,7 @@ $(document).ready(function() {
 		}
 	};
 
-	// buttons for mobile
+	// buttons for tablet/mobile
 	app.find('.mobileRight').on('click', function() {
 		helper.moveRight();
 	});
