@@ -71,7 +71,6 @@ $(document).ready(function() {
 			drawBackground: function() {
 				// context.fillStyle = '#fff';
 				// context.fillRect(0, 0, canvas.width, canvas.height);
-
 				var img = new Image();
 				img.src = 'assets/blueSky.jpg';
 				function drawSky() {
@@ -147,7 +146,7 @@ $(document).ready(function() {
 			resetSurvey: function(survey) {
 				survey.x = Math.random() * (canvas.width - surveyWidth);
 				survey.y = 40 + Math.random() * 30;
-				survey.speed = (0.5 + Math.random()) * 0.5;
+				survey.speed = (0.65 + Math.random()) * 0.65;
 			},
 			setGame: function() {
 				score = startingScore;
