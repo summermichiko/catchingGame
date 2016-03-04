@@ -11,12 +11,14 @@ $(document).ready(function() {
 		int,
 
 		// wufooSaurus variables
+		wufooSaurusWidth = 188,
+		wufooSaurusHeight = 180,
 		wufooSaurus = {
-			width: 150,
-			height: 175,
+			width: wufooSaurusWidth,
+			height: wufooSaurusHeight,
 			x: 0,
-			y: canvas.height - 150,
-			wufooSaurusSpeed: 15
+			y: canvas.height - wufooSaurusHeight,
+			wufooSaurusSpeed: 17
 		},
 
 		// survey variables
@@ -75,7 +77,7 @@ $(document).ready(function() {
 			},
 			drawWufooSaurus: function() {
 				var img = new Image();
-				img.src = 'assets/wufooSaurusSmall.png';
+				img.src = 'assets/wufooSaurusNew.png';
 				function drawDino() {
 					context.drawImage(img, wufooSaurus.x, wufooSaurus.y-10);
 				}
