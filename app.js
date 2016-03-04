@@ -58,6 +58,7 @@ $(document).ready(function() {
 						var slicedStr = parseInt(selector.slice(selector.length-1));
 						nextView = app.find('.instruction' + (slicedStr + 1));
 						nextView.show();
+						helper.playAudio(selector);
 					}
 				});
 			},
@@ -141,6 +142,13 @@ $(document).ready(function() {
 					wufooSaurus.x = widthAmount;
 				}
 			},
+			playAudio: function(selector) {
+				if (selector == '.button0') {
+					if ($(window).width() < 768) {
+						app.find('#audio').play();
+					}
+				}
+			},
 			resetSurvey: function(survey) {
 				survey.x = Math.random() * (canvas.width - surveyWidth);
 				survey.y = 40 + Math.random() * 30;
@@ -180,15 +188,6 @@ $(document).ready(function() {
 
 	app.find('.introView').show();
 	app.find('.mobileButtonWrapper').hide();
-
-
-	var audio = app.find('#audio');
-	app.find('.button0').on('click', function() {
-		if ($(window).width() < 768) {
-			audio.play();
-		}
-	});
-
 
 	for (var i = 0; i < totalSurveys; i++) {
 		helper.addSurvey();
