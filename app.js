@@ -12,11 +12,11 @@ $(document).ready(function() {
 
 		// wufooSaurus variables
 		wufooSaurus = {
-			width: 145,
-			height: 158,
-			x: 30,
-			y: canvas.height - 158,
-			wufooSaurusSpeed: 13
+			width: 150,
+			height: 175,
+			x: 0,
+			y: canvas.height - 150,
+			wufooSaurusSpeed: 15
 		},
 
 		// survey variables
@@ -75,7 +75,7 @@ $(document).ready(function() {
 			},
 			drawWufooSaurus: function() {
 				var img = new Image();
-				img.src = 'assets/wufooSaurus.png';
+				img.src = 'assets/wufooSaurusSmall.png';
 				function drawDino() {
 					context.drawImage(img, wufooSaurus.x, wufooSaurus.y-10);
 				}
@@ -85,15 +85,9 @@ $(document).ready(function() {
 				init();
 			},
 			drawScore: function() {
-				if($(window).width > 768) {
 					context.font = "14px 'Press Start 2P'";
 					context.fillStyle = "#000";
 					context.fillText("Score:" + score, 15, 30);
-				} else {
-					context.font = "24px 'Press Start 2P'";
-					context.fillStyle = "#000";
-					context.fillText("Score:" + score, 25, 40);
-				}
 			},
 			drawSurveys: function() {
 				for (var i = 0; i < surveys.length; i++) {
@@ -115,12 +109,14 @@ $(document).ready(function() {
 			isColliding: function(a, b) {
 				return !(b.x > a.x + a.width || b.x + b.width < a.x || b.y > a.y + a.height || b.y + b.height < a.y);
 			},
-			logMiss: function() {
+			logMiss: function(score) {
 				continueAnimating = false;
 				$('#surveyModal').modal({
-					// backdrop: 'static',
-					// keyboard: false
+					backdrop: 'static',
+					keyboard: false,
+					score: score
 				});
+				app.find('.completionText').text('Great job! You scored ' + score + '! It seems like you did a little better witha little help!');
 			},
 			moveLeft: function() {
 				wufooSaurus.x -= wufooSaurus.wufooSaurusSpeed;
@@ -138,7 +134,7 @@ $(document).ready(function() {
 			resetSurvey: function(survey) {
 				survey.x = Math.random() * (canvas.width - surveyWidth);
 				survey.y = 40 + Math.random() * 30;
-				survey.speed = (0.55 + Math.random()) * 0.9;
+				survey.speed = (0.5 + Math.random()) * 0.5;
 			},
 			setGame: function() {
 				score = startingScore;
@@ -166,24 +162,25 @@ $(document).ready(function() {
 					if (survey.y > canvas.height) {
 						sound = new Audio("audio/buzzerSound.mp3");
 						sound.play();
-						helper.logMiss();
+						helper.logMiss(score);
 					}
 				}
 			}
 		};
 
-	app.find('.instruction1').show();
+	app.find('.introView').show();
 	app.find('.mobileButtonWrapper').hide();
 
 	for (var i = 0; i < totalSurveys; i++) {
 		helper.addSurvey();
 	}
 
+	helper.bindClick('.button0');
 	helper.bindClick('.button1');
 	helper.bindClick('.button2');
 	helper.bindClick('#start');
 
-	// arrows for desktop
+	// arrow keys for desktop
 	document.onkeydown = function (event) {
 		if (event.keyCode == 39) {
 			helper.moveRight();
@@ -193,17 +190,11 @@ $(document).ready(function() {
 	};
 
 	// buttons for mobile
-	app.find('.mobileRight').on('touchstart mousedown', function(e) {
-		e.preventDefault();
-		int = setInterval(helper.moveRight, 100);
-	}).bind('mouseup', function() {
-		clearInterval(int);
+	app.find('.mobileRight').on('click', function() {
+		helper.moveRight();
 	});
-	app.find('.mobileLeft').on('touchstart mousedown', function(e) {
-		e.preventDefault();
-		int = setInterval(helper.moveLeft, 100);
-	}).bind('mouseup', function() {
-		clearInterval(int);
+	app.find('.mobileLeft').on('click', function() {
+		helper.moveLeft();
 	});
 
 	app.on('click', '.playAgainButton', function() {

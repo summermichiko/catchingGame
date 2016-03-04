@@ -20,12 +20,27 @@
 					<div class="modal-dialog">
 						<div class="modal-content">
 							<div class="modal-body">
-								<p class="completionText">Great job! It seems like you did a little better with a little help!</p>
+								<p class="completionText"></p>
 								<div class="modalButtonWrapper">
 									<button class="modalButton toPortfolioButton">Check out Summer's Portfolio</button>
 									<button class="modalButton playAgainButton">Play again</button>
 								</div>
 								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- intro view -->
+				<div class="introView surgeView">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="introWrapper">
+								<h1>SurveyCatch</h1>
+								<p>A friendship continued...</p>
+								<div class="imageWrapper">
+									<img class="introImg" src="assets/introImage.png">
+								</div>
+								<button class="viewButton button0">play now</button>
 							</div>
 						</div>
 					</div>
@@ -81,7 +96,8 @@
 							<div class="wrapperDiv row">
 								<div class="col-lg-8 col-lg-push-4 col-md-7 col-md-push-5 col-sm-7 col-sm-push-5 col-xs-12 col-xs-push-0">
 									<div class="textWrapper">
-										<p>Catch as many surveys as your can, but be careful. Don't drop any, or we're doomed!</p>
+										<p class="hidden-sm hidden-xs">Catch as many surveys as your can! Use the left and right arrows on your keyboard to move, but be careful. Don't drop any, or we're doomed!</p>
+										<p class="hidden-lg hidden-md">Catch as many surveys as your can! Use the left and right buttons to move, but be careful. Don't drop any, or we're doomed!</p>
 										<div class="buttonWrapper">
 											<button class="viewButton button3" id="start">let's do this.</button>
 										</div>
@@ -98,7 +114,7 @@
 				</div>
 				<!-- game view -->
 				<div class="surveyGame surgeView">
-					<canvas id="canvas" width=780 height=500></canvas>
+					<canvas id="canvas" width=780 height=550></canvas>
 				</div>
 				<div class="mobileButtonWrapper hidden-lg hidden-md hidden-sm col-xs-12">
 					<button class="mobileLeft viewButton">left</button>
@@ -106,9 +122,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- <audio autoplay>
+		<audio autoplay>
 			<source src="audio/gameSong.mp3" type="audio/mpeg">
-		</audio> -->
+		</audio>
 		<script type="text/javascript" src="app.js"></script>
 	</body>
 </html>

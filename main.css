@@ -51,14 +51,27 @@ html, body {
 }
 
 .surveySurge {
-	margin-top: 75px;
-	margin-bottom: 75px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 	font-family: 'Press Start 2P';
 }
 
 /* INSTRUCTIONAL VIEWS STYLES */
 .surveySurge .surgeView {
 	display: none;
+}
+
+.surveySurge .introWrapper {
+	text-align: center;
+	background-color: #fff;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	border-radius: 8px;
+}
+
+.surveySurge .introImg {
+	margin-bottom: 25px;
+	width: 300px;
 }
 
 .surveySurge .wrapperDiv {
@@ -69,7 +82,7 @@ html, body {
 }
 
 .surveySurge .imageWrapper {
-	min-height: 220px;
+	min-height: 250px;
 }
 
 .surveySurge .monkeyImg {
@@ -78,7 +91,7 @@ html, body {
 }
 
 .surveySurge .textWrapper {
-	min-height: 170px;
+	min-height: 200px;
 }
 
 .surveySurge .surgeView p {
@@ -175,10 +188,10 @@ html, body {
 /* MEDIA QUERIES */
 @media (max-width: 1199px) {
 	.surveySurge .imageWrapper {
-		min-height: 245px;
+		min-height: 300px;
 	}
 	.surveySurge .textWrapper {
-		min-height: 190px;
+		min-height: 250px;
 	}
 }
 
