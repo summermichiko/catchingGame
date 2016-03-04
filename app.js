@@ -8,7 +8,6 @@ $(document).ready(function() {
 		startingScore = 0,
 		continueAnimating = false,
 		score,
-		int,
 
 		// wufooSaurus variables
 		wufooSaurusWidth = 100,
