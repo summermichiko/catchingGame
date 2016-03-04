@@ -181,6 +181,13 @@ $(document).ready(function() {
 	app.find('.introView').show();
 	app.find('.mobileButtonWrapper').hide();
 
+	if ($(window).width() < 768) {
+		var audio = app.find('#audio');
+		app.find('.button0').on('click', function() {
+			audio.play();
+		});
+	}
+
 	for (var i = 0; i < totalSurveys; i++) {
 		helper.addSurvey();
 	}
