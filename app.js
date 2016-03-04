@@ -126,7 +126,7 @@ $(document).ready(function() {
 					keyboard: false,
 					score: score
 				});
-				app.find('.completionText').text('Great job! You scored ' + score + '! It seems like you did a little better with some help from Wufoosaurus!');
+				app.find('.completionText').text('You crushed it! You scored ' + score + ' points! This quick game was made by Summer McDonald, a big fan of monkey–dino love.');
 			},
 			moveLeft: function() {
 				wufooSaurus.x -= wufooSaurus.wufooSaurusSpeed;
