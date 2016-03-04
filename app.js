@@ -11,8 +11,8 @@ $(document).ready(function() {
 		int,
 
 		// wufooSaurus variables
-		wufooSaurusWidth = 188,
-		wufooSaurusHeight = 180,
+		wufooSaurusWidth = 100,
+		wufooSaurusHeight = 100,
 		wufooSaurus = {
 			width: wufooSaurusWidth,
 			height: wufooSaurusHeight,
