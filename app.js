@@ -69,8 +69,6 @@ $(document).ready(function() {
 				helper.drawSurveys();
 			},
 			drawBackground: function() {
-				// context.fillStyle = '#fff';
-				// context.fillRect(0, 0, canvas.width, canvas.height);
 				var img = new Image();
 				img.src = 'assets/blueSky.jpg';
 				function drawSky() {
@@ -128,7 +126,7 @@ $(document).ready(function() {
 					keyboard: false,
 					score: score
 				});
-				app.find('.completionText').text('Great job! You scored ' + score + '! It seems like you did a little better witha little help!');
+				app.find('.completionText').text('Great job! You scored ' + score + '! It seems like you did a little better with some help from Wufoosaurus!');
 			},
 			moveLeft: function() {
 				wufooSaurus.x -= wufooSaurus.wufooSaurusSpeed;
