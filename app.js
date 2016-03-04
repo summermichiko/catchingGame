@@ -193,12 +193,14 @@ $(document).ready(function() {
 	};
 
 	// buttons for mobile
-	app.find('.mobileRight').bind('mousedown', function() {
+	app.find('.mobileRight').on('touchstart mousedown', function(e) {
+		e.preventDefault();
 		int = setInterval(helper.moveRight, 100);
 	}).bind('mouseup', function() {
 		clearInterval(int);
 	});
-	app.find('.mobileLeft').bind('mousedown', function() {
+	app.find('.mobileLeft').on('touchstart mousedown', function(e) {
+		e.preventDefault();
 		int = setInterval(helper.moveLeft, 100);
 	}).bind('mouseup', function() {
 		clearInterval(int);
